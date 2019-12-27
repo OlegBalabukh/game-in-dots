@@ -1,0 +1,22 @@
+#dropdownBtn {
+  width: 200px;
+  text-align: left;
+  background-color: #CFD8DC;
+  padding: 10px;
+  color: #7B8D93; 
+  font-size: 1.1em;
+}
+
+#dropdownMenu {
+  width: 200px;
+}
+
+.dropdown-toggle::after { 
+  content: none; 
+}
+
+.fa-chevron-up, .fa-chevron-down {
+  font-size: 0.7em;  
+  float: right;
+  padding: 8px 10px;
+}
