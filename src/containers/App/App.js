@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import DropDown from '../../components/DropDown/DropDown';
 import InputField from '../../components/InputField/InputField';
 import PlayButton from '../../components/PlayButton/PlayButton';
+import LeaderBoard from '../../components/LeaderBoard/LeaderBoard';
 import { getSettingsAction } from './actions/getSettings.action';
 import { getWinnersAction  } from './actions/getWinners.action';
 import './App.css';
@@ -12,8 +13,8 @@ const  App = (props) => {
 const { settings, winners } = props;
 const { getSettings, getWinners } = props;
 
-  console.log(settings)
-  console.log(winners)
+  // console.log(settings)
+  // console.log(winners)
 
   useEffect(() => {
     if (winners.length === 0) {
@@ -26,10 +27,11 @@ const { getSettings, getWinners } = props;
     <>
       <h1>Game In Dots</h1>
       <div className="inlineBlock">
-        <DropDown/>
-        <InputField/>
-        <PlayButton/>
+        <DropDown />
+        <InputField />
+        <PlayButton />        
       </div>
+      <LeaderBoard winners={winners} />
       
     </>  
   )
