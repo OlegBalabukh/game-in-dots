@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import DropDown from '../../components/DropDown/DropDown';
 import InputField from '../../components/InputField/InputField';
 import PlayButton from '../../components/PlayButton/PlayButton';
+import GameField from '../../components/GameField/GameField';
 import LeaderBoard from '../../components/LeaderBoard/LeaderBoard';
 import { getSettingsAction } from './actions/getSettings.action';
 import { getWinnersAction  } from './actions/getWinners.action';
@@ -25,12 +26,13 @@ const { getSettings, getWinners } = props;
   
   return (
     <>
-      <h1>Game In Dots</h1>
+      {/* <h1>Game In Dots</h1> */}
       <div className="inlineBlock">
         <DropDown />
         <InputField />
         <PlayButton />        
       </div>
+      <GameField settings={settings} />
       <LeaderBoard winners={winners} />
       
     </>  
