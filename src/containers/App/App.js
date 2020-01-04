@@ -11,7 +11,7 @@ import { getWinnersAction  } from './actions/getWinners.action';
 import './App.css';
 
 const  App = (props) => {
-const { settings, winners } = props;
+const { settings, winners, gameStatus } = props;
 const { getSettings, getWinners } = props;
 
   // console.log(settings)
@@ -41,7 +41,8 @@ const { getSettings, getWinners } = props;
 
 const mapStateToProps = (state) => ({
   settings: state.settings,
-  winners: state.winners
+  winners: state.winners,
+  gameStatus: state.gameStatus
 });
 
 const mapDispatchToProps = (dispatch) => ({
