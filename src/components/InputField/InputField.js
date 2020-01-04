@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import './InputField.css';
 
-const InputField = () => {
-  const [input, setInput] = useState("");
+const InputField = ({ setName }) => {
 
   const handleChange = ({ target: { value }}) => {
-    setInput(value)
+    value.length > 2 && setName(value)
   }
 
   return (

@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import './DropDown.css';
 
-const DropDown = () => {
+const DropDown = ({ settings, setModeOptions }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState("Pick game mode");
 
   const toggleOpen = () => setIsOpen(!isOpen);
 
+  const pickModeOptions = (mode) => {
+    switch (mode) {
+      case 'Normal':
+        return settings.normalMode
+      case 'Hard':
+      return settings.hardMode    
+      default:
+        return settings.easyMode 
+    }
+  }
+
   const toggleMode = (mode) => {
+    const options = pickModeOptions(mode)    
+    setModeOptions(options) 
     setMode(mode);
     setIsOpen(false);
   }

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const PlayButton = () => {
+const PlayButton = ({ startGame }) => {
   const [name, setName] = useState("PLAY");
 
-  const handleClick = () => setName("PLAY AGAIN");
+  const handleClick = () => startGame(true);
 
   return (
     <button
