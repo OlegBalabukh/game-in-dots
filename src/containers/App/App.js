@@ -31,7 +31,7 @@ const { setModeOptions, setName, startGame } = props;
       <div className="inlineBlock">
         <DropDown settings={settings} setModeOptions={setModeOptions}/>
         <InputField setName={setName}/>
-        <PlayButton field={gameStatus.field} playerName={gameStatus.name} startGame={startGame} />        
+        <PlayButton gameStatus={gameStatus} startGame={startGame} />        
       </div>
       <GameField field={gameStatus.gameField} />
       <LeaderBoard winners={winners} />

@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 
-const PlayButton = ({ startGame, field, playerName }) => {
+const PlayButton = ({ startGame, gameStatus }) => {
   const [btnName, setName] = useState("PLAY");
 
-  const handleClick = () => startGame(true);
+  const { field, name } = gameStatus;
+  const { delay, gameField, emptySquares } = gameStatus;
+  
+  const startOptions = {
+    play: true,
+    options: {
+      delay,
+      gameField,
+      emptySquares
+    }
+  }
+
+  const handleClick = () => startGame(startOptions);
 
   return (
     <button
@@ -11,7 +23,7 @@ const PlayButton = ({ startGame, field, playerName }) => {
       className="btn btn-secondary"
       style={{width: "115px", padding: "10px"}}
       onClick={handleClick}
-      disabled={!(field && playerName.length > 2)}
+      disabled={!(field && name.length > 2)}
     > {btnName} </button>
   )
 }

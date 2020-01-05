@@ -18,3 +18,15 @@
   height: 50px;
   border: 1px solid #CFD8DC;  
 }
+
+.square#blue {
+  background-color: #44D7EB;
+}
+
+.square#green {
+  background-color: #00E775;
+}
+
+.square#red {
+  background-color: #E95A60;
+}

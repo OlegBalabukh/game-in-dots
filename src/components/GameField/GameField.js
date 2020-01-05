@@ -12,7 +12,7 @@ const GameField = ({ field }) => {
           <div className="row" key={i}>
             {
               row.map(square =>
-              <div className="square" key={square.id}></div>)
+              <div className="square" key={square.id} id={square.color}></div>)
             }
           </div>)
         }

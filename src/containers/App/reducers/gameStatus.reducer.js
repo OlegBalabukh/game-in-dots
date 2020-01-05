@@ -2,6 +2,7 @@ import {
   SET_MODE_OPTIONS,
   SET_NAME,
   START_GAME,
+  SET_BLUE,
   SET_GAME_FIELD_OPTIONS
 } from '../constants'
 
@@ -44,6 +45,13 @@ export const gameStatusReducer = (state = {
       return {
         ...state,
         play: payload
+      };
+
+    case SET_BLUE:
+      return {
+        ...state,
+        gameField: payload.gameField,
+        emptySquares: payload.emptySquares
       };
 
     default:
