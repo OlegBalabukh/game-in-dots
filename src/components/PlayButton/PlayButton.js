@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const PlayButton = ({ startGame }) => {
-  const [name, setName] = useState("PLAY");
+const PlayButton = ({ startGame, field, playerName }) => {
+  const [btnName, setName] = useState("PLAY");
 
   const handleClick = () => startGame(true);
 
@@ -11,7 +11,8 @@ const PlayButton = ({ startGame }) => {
       className="btn btn-secondary"
       style={{width: "115px", padding: "10px"}}
       onClick={handleClick}
-    > {name} </button>
+      disabled={!(field && playerName.length > 2)}
+    > {btnName} </button>
   )
 }
 

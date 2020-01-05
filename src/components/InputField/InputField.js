@@ -4,7 +4,7 @@ import './InputField.css';
 const InputField = ({ setName }) => {
 
   const handleChange = ({ target: { value }}) => {
-    value.length > 2 && setName(value)
+    setName(value)
   }
 
   return (
