@@ -2,7 +2,7 @@ import {
   SET_MODE_OPTIONS,
   SET_NAME,
   START_GAME,
-  SET_GAME_FIELD
+  SET_GAME_FIELD_OPTIONS
 } from '../constants'
 
 export const gameStatusReducer = (state = {
@@ -27,10 +27,11 @@ export const gameStatusReducer = (state = {
         delay: payload.delay
       };
 
-    case SET_GAME_FIELD:
+    case SET_GAME_FIELD_OPTIONS:
       return {
         ...state,
-        gameField: payload
+        gameField: payload.gameField,
+        emptySquares: payload.emptySquares
       };
 
     case SET_NAME:
