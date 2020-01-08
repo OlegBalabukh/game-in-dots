@@ -4,14 +4,15 @@ const PlayButton = ({ startGame, gameStatus }) => {
   const [btnName, setName] = useState("PLAY");
 
   const { field, name } = gameStatus;
-  const { delay, gameField, emptySquares } = gameStatus;
+  const { delay, gameField, emptySquares, activeSquare } = gameStatus;
   
   const startOptions = {
     play: true,
     options: {
       delay,
       gameField,
-      emptySquares
+      emptySquares,
+      activeSquare
     }
   }
 

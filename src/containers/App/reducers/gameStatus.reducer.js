@@ -3,6 +3,8 @@ import {
   SET_NAME,
   START_GAME,
   SET_BLUE,
+  SET_RED,
+  SET_GREEN,
   SET_GAME_FIELD_OPTIONS
 } from '../constants'
 
@@ -15,6 +17,10 @@ export const gameStatusReducer = (state = {
     player: 0,
     computer: 0,
     winner: null
+  },
+  activeSquare: {
+    id: null,
+    color: 'blue'
   },
   emptySquares: [],
   gameField: null
@@ -51,7 +57,22 @@ export const gameStatusReducer = (state = {
       return {
         ...state,
         gameField: payload.gameField,
-        emptySquares: payload.emptySquares
+        emptySquares: payload.emptySquares,
+        activeSquare: payload.activeSquare
+      };
+
+    case SET_RED:
+      return {
+        ...state,
+        gameField: payload,
+        activeSquare: { ...state.activeSquare, color: 'red' }
+      };
+
+    case SET_GREEN:
+      return {
+        ...state,
+        gameField: payload,
+        activeSquare: { ...state.activeSquare, color: 'green' }
       };
 
     default:
