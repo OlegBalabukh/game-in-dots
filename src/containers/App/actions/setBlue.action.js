@@ -29,13 +29,12 @@ export const setBlueAction  = (payload)  => async dispatch => {
   const updatedGameField = setColor(gameField, randomID, 'blue')
   const updatedActiveSquare = {color: 'blue', id: randomID}
 
-  const newGameOptions = {
+  const newRoundOptions = {
     gameField: updatedGameField, 
     emptySquares: updatedEmptySquares,
     activeSquare: updatedActiveSquare 
   }
 
   return sleep(delay)
-    .then(() => dispatch({ type: SET_BLUE, payload: newGameOptions }))    
-    
+    .then(() => dispatch({ type: SET_BLUE, payload: newRoundOptions }))
 };

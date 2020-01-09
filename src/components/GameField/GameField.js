@@ -1,35 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import './GameField.css';
 
-const GameField = ({ gameStatus, setGreen, setBlue, setRed }) => {
+const GameField = ({ gameStatus, setGreen, settingRed, cancelSettingRed }) => {
 
   const { activeSquare, gameField, delay, emptySquares } = gameStatus
 
-  const sleep = ms => {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(), ms)
-    })
-  }
-
-  const id = activeSquare.id;
-  console.log(activeSquare.color)
-
   useEffect(() => {
-    if (id && activeSquare.color === 'blue') {      
-      sleep(delay)
-        .then(() => {
-          if (activeSquare.color === 'blue') {
-            setRed({ id, gameField })
-          }
-          })
-    }
+    activeSquare.color === 'blue' && settingRed()    
+  }, [activeSquare.color, gameField, settingRed])
 
-  }, [id, activeSquare.color, delay, gameField, setRed])
-
-
-  const onClickHandler = (id, color) => {
-    if (color === 'blue') {      
-      setGreen({ id, gameField })
+  const onClickHandler = (id, color) => {    
+    if (color === 'blue') {
+      cancelSettingRed()
+      setGreen({ id, gameField, delay, emptySquares })
     }
   }
 
@@ -48,8 +31,7 @@ const GameField = ({ gameStatus, setGreen, setBlue, setRed }) => {
                 key={square.id}
                 id={square.color}
                 onClick={() => onClickHandler(square.id, square.color)}
-              >
-                
+              >                
               </div>)
             }
           </div>)
