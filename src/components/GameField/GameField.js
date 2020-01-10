@@ -3,7 +3,7 @@ import './GameField.css';
 
 const GameField = ({ gameStatus, setGreen, settingRed, cancelSettingRed }) => {
 
-  const { activeSquare, gameField, delay, emptySquares } = gameStatus
+  const { activeSquare, gameField, delay, emptySquares, score } = gameStatus
 
   useEffect(() => {
     activeSquare.color === 'blue' && settingRed()    
@@ -12,7 +12,7 @@ const GameField = ({ gameStatus, setGreen, settingRed, cancelSettingRed }) => {
   const onClickHandler = (id, color) => {    
     if (color === 'blue') {
       cancelSettingRed()
-      setGreen({ id, gameField, delay, emptySquares })
+      setGreen({ id, gameField, delay, emptySquares, score })
     }
   }
 

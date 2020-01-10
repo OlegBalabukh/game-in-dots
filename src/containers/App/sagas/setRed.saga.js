@@ -3,11 +3,12 @@ import { put, take, select, cancel, call, delay, fork } from 'redux-saga/effects
 import { settingRedCompletedAction } from '../actions/settingRedCompleted.action'
 import { SETTING_RED, SETTING_RED_CANCELLED, SETTING_RED_COMPLETED } from '../constants'
 
-const gameStatusParams = ({ gameStatus: { activeSquare, gameField, delay, emptySquares } }) => ({
+const gameStatusParams = ({ gameStatus: { activeSquare, gameField, delay, emptySquares, score } }) => ({
   activeSquare,
   gameField,
   emptySquares,
-  delay 
+  delay,
+  score
 });
 
 function* settingRed() {

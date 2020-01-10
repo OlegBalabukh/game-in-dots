@@ -2,7 +2,7 @@ import { SET_BLUE } from '../constants';
 
 export const setBlueAction  = (payload)  => async dispatch => {
   const { delay, gameField, emptySquares } = payload;
-
+  
   const getRandomID = (arr) => {
     return  arr[Math.floor(Math.random() * arr.length)];   
   }
@@ -34,7 +34,7 @@ export const setBlueAction  = (payload)  => async dispatch => {
     emptySquares: updatedEmptySquares,
     activeSquare: updatedActiveSquare 
   }
-
+  
   return sleep(delay)
     .then(() => dispatch({ type: SET_BLUE, payload: newRoundOptions }))
 };

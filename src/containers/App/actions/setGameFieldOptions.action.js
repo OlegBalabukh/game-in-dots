@@ -32,9 +32,21 @@ export const setGameFieldOptionsAction = (fieldSize) => {
     return emptySquares;
   }
 
+  const setWinnerScore = (n) => {
+    if (n % 2) {
+      return Math.ceil(n*n / 2)
+    }
+    return n*n / 2 + 1
+  }
+
   const gameFieldOptions = {
     gameField: makeField(fieldSize),
-    emptySquares: makeEmptySquares(fieldSize)
+    emptySquares: makeEmptySquares(fieldSize),
+    score:  {
+      player: 0,
+      computer: 0,
+      winner: setWinnerScore(fieldSize)
+    },
   }
  
   return { type: SET_GAME_FIELD_OPTIONS, payload: gameFieldOptions }

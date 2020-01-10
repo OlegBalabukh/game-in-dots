@@ -13,11 +13,7 @@ export const gameStatusReducer = (state = {
   name: "",
   field: null,
   delay: null,
-  squares: {
-    player: 0,
-    computer: 0,
-    winner: null
-  },
+  score: null,
   activeSquare: {
     id: null,
     color: ""
@@ -38,7 +34,8 @@ export const gameStatusReducer = (state = {
       return {
         ...state,
         gameField: payload.gameField,
-        emptySquares: payload.emptySquares
+        emptySquares: payload.emptySquares,
+        score: payload.score
       };
 
     case SET_NAME:
