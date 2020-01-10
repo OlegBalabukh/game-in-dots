@@ -20,6 +20,7 @@ const  App = (props) => {
 const { settings, winners, gameStatus } = props;
 const { getSettings, getWinners } = props;
 const { setModeOptions, setName, startGame, setGreen, settingRed, cancelSettingRed } = props;
+const { message } = gameStatus;
 
   useEffect(() => {
     if (winners.length === 0) {
@@ -36,6 +37,7 @@ const { setModeOptions, setName, startGame, setGreen, settingRed, cancelSettingR
         <InputField setName={setName}/>
         <PlayButton gameStatus={gameStatus} startGame={startGame} />        
       </div>
+      <h3>{ message }</h3>
       <GameField
         gameStatus={gameStatus}
         setGreen={setGreen}

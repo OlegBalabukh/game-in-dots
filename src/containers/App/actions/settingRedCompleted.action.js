@@ -1,5 +1,6 @@
 import { SETTING_RED_COMPLETED } from '../constants';
 import { setBlueAction } from './setBlue.action'
+import { stopGameAction } from './stopGame.action'
 
 export const settingRedCompletedAction = (payload) => dispatch => {
   const { delay, activeSquare, gameField, emptySquares, score } = payload  
@@ -33,7 +34,7 @@ export const settingRedCompletedAction = (payload) => dispatch => {
   if (startNextRound) {
     dispatch(setBlueAction(nextRoundOptions))
   } else {
-    //dispatch(stopGameAction({ winner: "Computer", score: nextRoundOptions.score.computer }))
+    dispatch(stopGameAction({ winner: "Computer"}))
   }
     
 }

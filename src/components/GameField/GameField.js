@@ -3,7 +3,7 @@ import './GameField.css';
 
 const GameField = ({ gameStatus, setGreen, settingRed, cancelSettingRed }) => {
 
-  const { activeSquare, gameField, delay, emptySquares, score } = gameStatus
+  const { activeSquare, gameField, delay, emptySquares, score, playerName } = gameStatus
 
   useEffect(() => {
     activeSquare.color === 'blue' && settingRed()    
@@ -12,32 +12,29 @@ const GameField = ({ gameStatus, setGreen, settingRed, cancelSettingRed }) => {
   const onClickHandler = (id, color) => {    
     if (color === 'blue') {
       cancelSettingRed()
-      setGreen({ id, gameField, delay, emptySquares, score })
+      setGreen({ id, gameField, delay, emptySquares, score, playerName })
     }
   }
 
-  return (
-    <>
-      <div>Game Field</div>
-      <div id="field">
-        {
-          gameField &&
-          gameField.map((row, i) => 
-          <div className="row" key={i}>
-            {
-              row.map(square =>
-              <div 
-                className="square"
-                key={square.id}
-                id={square.color}
-                onClick={() => onClickHandler(square.id, square.color)}
-              >                
-              </div>)
-            }
-          </div>)
-        }
-      </div>
-    </>
+  return (      
+    <div id="field">
+      {
+        gameField &&
+        gameField.map((row, i) => 
+        <div className="row" key={i}>
+          {
+            row.map(square =>
+            <div 
+              className="square"
+              key={square.id}
+              id={square.color}
+              onClick={() => onClickHandler(square.id, square.color)}
+            >                
+            </div>)
+          }
+        </div>)
+      }
+    </div>
   )
 }
 

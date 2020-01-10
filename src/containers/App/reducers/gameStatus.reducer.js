@@ -2,6 +2,7 @@ import {
   SET_MODE_OPTIONS,
   SET_NAME,
   START_GAME,
+  STOP_GAME,
   SET_BLUE,
   SETTING_RED_COMPLETED,
   SET_GREEN,
@@ -10,10 +11,11 @@ import {
 
 export const gameStatusReducer = (state = {
   play: false,
-  name: "",
-  field: null,
+  playerName: "",
+  fieldSize: null,
   delay: null,
   score: null,
+  message: "",
   activeSquare: {
     id: null,
     color: ""
@@ -26,7 +28,7 @@ export const gameStatusReducer = (state = {
     case SET_MODE_OPTIONS:
       return {
         ...state,
-        field: payload.field,
+        fieldSize: payload.field,
         delay: payload.delay
       };
 
@@ -41,14 +43,22 @@ export const gameStatusReducer = (state = {
     case SET_NAME:
       return {
         ...state,
-        name: payload
+        playerName: payload
       };
 
     case START_GAME:
       return {
         ...state,
-        play: payload
+        play: payload,
+        message: ""
       };
+
+    case STOP_GAME:
+      console.log(payload)
+    return {
+      ...state,
+      message: `${payload} won!`
+    };
 
     case SET_BLUE:
       return {
