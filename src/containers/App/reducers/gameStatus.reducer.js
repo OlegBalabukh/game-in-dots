@@ -3,7 +3,6 @@ import {
   SET_NAME,
   START_GAME,
   STOP_GAME,
-  RESET_SCORE,
   SET_BLUE,
   SETTING_RED_COMPLETED,
   SET_GREEN,
@@ -56,12 +55,6 @@ export const gameStatusReducer = (state = {
     return {
       ...state,
       message: `${payload} won!`
-    };
-
-    case RESET_SCORE:
-    return {
-      ...state,
-      score: payload
     };
 
     case SET_BLUE:

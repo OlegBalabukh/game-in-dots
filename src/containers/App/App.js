@@ -11,7 +11,7 @@ import { getWinnersAction } from './actions/getWinners.action';
 import { setModeOptionsAction } from './actions/setModeOptions.action';
 import { setNameAction } from './actions/setName.action';
 import { startGameAction } from './actions/startGame.action';
-import { resetScoreAction } from './actions/resetScore.action';
+import { restartGameAction } from './actions/restartGame.action';
 import { setGreenAction } from './actions/setGreen.action';
 import { settingRedAction } from './actions/settingRed.action';
 import { settingRedCancelledAction  } from './actions/settingRedCancelled.action';
@@ -20,7 +20,7 @@ import './App.css';
 const  App = (props) => {
 const { settings, winners, gameStatus } = props;
 const { getSettings, getWinners } = props;
-const { setModeOptions, setName, startGame, resetScore, setGreen, settingRed, cancelSettingRed } = props;
+const { setModeOptions, setName, startGame, restartGame, setGreen, settingRed, cancelSettingRed } = props;
 const { message } = gameStatus;
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const { message } = gameStatus;
       <div className="inlineBlock">
         <DropDown settings={settings} setModeOptions={setModeOptions}/>
         <InputField setName={setName}/>
-        <PlayButton gameStatus={gameStatus} startGame={startGame} resetScore={resetScore} />        
+        <PlayButton gameStatus={gameStatus} startGame={startGame} restartGame={restartGame} />        
       </div>
       <h3>{ message }</h3>
       <GameField
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch) => ({
   setModeOptions: (options) => { dispatch(setModeOptionsAction(options)); },
   setName: (name) => { dispatch(setNameAction(name)); },
   startGame: (options) => { dispatch(startGameAction(options)); },
-  resetScore: (options) => { dispatch(resetScoreAction(options)); },
+  restartGame: (options) => { dispatch(restartGameAction(options)); },
   setGreen: (options) => { dispatch(setGreenAction(options)); },
   settingRed: (options) => { dispatch(settingRedAction(options)); },
   cancelSettingRed: (options) => { dispatch(settingRedCancelledAction(options)); }
