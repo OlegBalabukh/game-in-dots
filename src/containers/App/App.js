@@ -7,19 +7,20 @@ import PlayButton from '../../components/PlayButton/PlayButton';
 import GameField from '../../components/GameField/GameField';
 import LeaderBoard from '../../components/LeaderBoard/LeaderBoard';
 import { getSettingsAction } from './actions/getSettings.action';
-import { getWinnersAction  } from './actions/getWinners.action';
-import { setModeOptionsAction  } from './actions/setModeOptions.action';
-import { setNameAction  } from './actions/setName.action';
-import { startGameAction  } from './actions/startGame.action';
-import { setGreenAction  } from './actions/setGreen.action';
-import { settingRedAction  } from './actions/settingRed.action';
+import { getWinnersAction } from './actions/getWinners.action';
+import { setModeOptionsAction } from './actions/setModeOptions.action';
+import { setNameAction } from './actions/setName.action';
+import { startGameAction } from './actions/startGame.action';
+import { resetScoreAction } from './actions/resetScore.action';
+import { setGreenAction } from './actions/setGreen.action';
+import { settingRedAction } from './actions/settingRed.action';
 import { settingRedCancelledAction  } from './actions/settingRedCancelled.action';
 import './App.css';
 
 const  App = (props) => {
 const { settings, winners, gameStatus } = props;
 const { getSettings, getWinners } = props;
-const { setModeOptions, setName, startGame, setGreen, settingRed, cancelSettingRed } = props;
+const { setModeOptions, setName, startGame, resetScore, setGreen, settingRed, cancelSettingRed } = props;
 const { message } = gameStatus;
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const { message } = gameStatus;
       <div className="inlineBlock">
         <DropDown settings={settings} setModeOptions={setModeOptions}/>
         <InputField setName={setName}/>
-        <PlayButton gameStatus={gameStatus} startGame={startGame} />        
+        <PlayButton gameStatus={gameStatus} startGame={startGame} resetScore={resetScore} />        
       </div>
       <h3>{ message }</h3>
       <GameField
@@ -60,8 +61,9 @@ const mapDispatchToProps = (dispatch) => ({
   getWinners: () => { dispatch(getWinnersAction()); },  
   setModeOptions: (options) => { dispatch(setModeOptionsAction(options)); },
   setName: (name) => { dispatch(setNameAction(name)); },
-  startGame: (boolean) => { dispatch(startGameAction(boolean)); },
-  setGreen: (id) => { dispatch(setGreenAction(id)); },
+  startGame: (options) => { dispatch(startGameAction(options)); },
+  resetScore: (options) => { dispatch(resetScoreAction(options)); },
+  setGreen: (options) => { dispatch(setGreenAction(options)); },
   settingRed: (options) => { dispatch(settingRedAction(options)); },
   cancelSettingRed: (options) => { dispatch(settingRedCancelledAction(options)); }
 });

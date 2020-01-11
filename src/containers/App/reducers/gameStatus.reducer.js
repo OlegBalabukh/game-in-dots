@@ -3,6 +3,7 @@ import {
   SET_NAME,
   START_GAME,
   STOP_GAME,
+  RESET_SCORE,
   SET_BLUE,
   SETTING_RED_COMPLETED,
   SET_GREEN,
@@ -10,7 +11,6 @@ import {
 } from '../constants'
 
 export const gameStatusReducer = (state = {
-  play: false,
   playerName: "",
   fieldSize: null,
   delay: null,
@@ -49,15 +49,19 @@ export const gameStatusReducer = (state = {
     case START_GAME:
       return {
         ...state,
-        play: payload,
         message: ""
       };
 
     case STOP_GAME:
-      console.log(payload)
     return {
       ...state,
       message: `${payload} won!`
+    };
+
+    case RESET_SCORE:
+    return {
+      ...state,
+      score: payload
     };
 
     case SET_BLUE:
