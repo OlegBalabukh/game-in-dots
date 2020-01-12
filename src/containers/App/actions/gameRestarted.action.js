@@ -1,8 +1,8 @@
-import { RESTART_GAME } from '../constants';
+import { GAME_RESTARTED } from '../constants';
 import { setBlueAction } from './setBlue.action'
 import { setGameFieldOptionsAction } from './setGameFieldOptions.action' 
 
-export const restartGameAction = (payload) => dispatch => {
+export const gameRestartedAction = (payload) => dispatch => {
 
   const { fieldSize, delay } = payload;
   const options = setGameFieldOptionsAction(fieldSize);
@@ -14,7 +14,7 @@ export const restartGameAction = (payload) => dispatch => {
     emptySquares  
   }
 
-  dispatch({ type: RESTART_GAME })
+  dispatch({ type: GAME_RESTARTED })
   dispatch(setGameFieldOptionsAction(fieldSize));
   dispatch(setBlueAction(newGameOptions));
 }

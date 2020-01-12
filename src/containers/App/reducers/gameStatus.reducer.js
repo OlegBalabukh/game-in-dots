@@ -1,8 +1,10 @@
 import {  
   SET_MODE_OPTIONS,
   SET_NAME,
-  START_GAME,
-  STOP_GAME,
+  // GAME_STARTED,
+  GAME_FINISHED,
+  GAME_RESTARTED,
+  // STOP_GAME,
   SET_BLUE,
   SETTING_RED_COMPLETED,
   SET_GREEN,
@@ -45,13 +47,25 @@ export const gameStatusReducer = (state = {
         playerName: payload
       };
 
-    case START_GAME:
+    // case GAME_STARTED:
+    //   return {
+    //     ...state,
+    //     message: ""
+    //   };
+
+      case GAME_RESTARTED:
       return {
         ...state,
         message: ""
       };
 
-    case STOP_GAME:
+    // case STOP_GAME:
+    // return {
+    //   ...state,
+    //   message: `${payload} won!`
+    // };
+
+    case GAME_FINISHED:
     return {
       ...state,
       message: `${payload} won!`

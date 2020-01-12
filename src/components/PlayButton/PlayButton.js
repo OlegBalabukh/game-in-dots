@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlayButton = ({ startGame, gameStatus, restartGame }) => {
+const PlayButton = ({ gameStart, gameRestart, gameStatus }) => {
   
 
   const { fieldSize, playerName, message } = gameStatus;
@@ -21,8 +21,8 @@ const PlayButton = ({ startGame, gameStatus, restartGame }) => {
 
   const handleClick = () => {
     message !== ""
-      ? restartGame(restartOptions)
-      : startGame(startOptions);
+      ? gameRestart(restartOptions)
+      : gameStart(startOptions);
     
   }
 

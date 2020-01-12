@@ -1,6 +1,6 @@
 import { SET_GREEN } from '../constants';
 import { setBlueAction } from './setBlue.action'
-import { stopGameAction } from './stopGame.action'
+import { addWinnerAction } from './addWinner.action'
 
 export const setGreenAction = (payload) => dispatch => {
 
@@ -36,7 +36,7 @@ export const setGreenAction = (payload) => dispatch => {
   if (startNextRound) {
     dispatch(setBlueAction(nextRoundOptions))
   } else {
-    dispatch(stopGameAction({ winner: playerName }))
+    dispatch(addWinnerAction({ winner: playerName, date: Date.now() }))
   }
   
 }

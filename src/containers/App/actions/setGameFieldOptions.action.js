@@ -50,6 +50,8 @@ export const setGameFieldOptionsAction = (fieldSize) => {
       winner: setWinnerScore(fieldSize)
     },
   }
+
+  
  
   return { type: SET_GAME_FIELD_OPTIONS, payload: gameFieldOptions }
 };
