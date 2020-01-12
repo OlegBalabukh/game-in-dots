@@ -19,8 +19,8 @@ const DropDown = ({ settings, setModeOptions }) => {
   }
 
   const toggleMode = (mode) => {
-    const options = pickModeOptions(mode)    
-    setModeOptions(options) 
+    const modeOptions = pickModeOptions(mode)
+    setModeOptions(modeOptions)
     setMode(mode);
     setIsOpen(false);
   }

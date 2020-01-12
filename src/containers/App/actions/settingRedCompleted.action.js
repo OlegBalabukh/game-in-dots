@@ -19,6 +19,7 @@ export const settingRedCompletedAction = (payload) => dispatch => {
   const updatedWithRed = setColor(gameField, activeSquare.id, 'red')
 
   const nextRoundOptions = {
+    play: true,
     gameField: updatedWithRed,
     score: { 
       ...score,

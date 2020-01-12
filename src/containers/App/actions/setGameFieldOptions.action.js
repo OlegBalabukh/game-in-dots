@@ -1,7 +1,6 @@
 import { SET_GAME_FIELD_OPTIONS } from '../constants';
 
-export const setGameFieldOptionsAction = (fieldSize) => {
-   
+export const setGameFieldOptionsAction = (fieldSize) => {   
 
   const makeField = (size) => {    
     const field = [];

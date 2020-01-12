@@ -1,17 +1,18 @@
 import {  
   SET_MODE_OPTIONS,
   SET_NAME,
-  // GAME_STARTED,
+  GAME_STARTED,
   GAME_FINISHED,
   GAME_RESTARTED,
-  // STOP_GAME,
+  STOP_GAME,
   SET_BLUE,
   SETTING_RED_COMPLETED,
   SET_GREEN,
   SET_GAME_FIELD_OPTIONS
 } from '../constants'
 
-export const gameStatusReducer = (state = {
+const initialState = {
+  play: false,
   playerName: "",
   fieldSize: null,
   delay: null,
@@ -23,12 +24,15 @@ export const gameStatusReducer = (state = {
   },
   emptySquares: [],
   gameField: null
-}, {type, payload}) => {
+}
+
+export const gameStatusReducer = (state = initialState, {type, payload}) => {
   switch(type) {
 
     case SET_MODE_OPTIONS:
       return {
         ...state,
+        play: false,
         fieldSize: payload.field,
         delay: payload.delay
       };
@@ -47,11 +51,11 @@ export const gameStatusReducer = (state = {
         playerName: payload
       };
 
-    // case GAME_STARTED:
-    //   return {
-    //     ...state,
-    //     message: ""
-    //   };
+      case GAME_STARTED:
+      return {
+        ...state,
+        play: true
+      };
 
       case GAME_RESTARTED:
       return {
@@ -59,15 +63,16 @@ export const gameStatusReducer = (state = {
         message: ""
       };
 
-    // case STOP_GAME:
-    // return {
-    //   ...state,
-    //   message: `${payload} won!`
-    // };
+    case STOP_GAME:
+    return {
+      ...initialState,
+      playerName: state.playerName
+    };
 
     case GAME_FINISHED:
     return {
       ...state,
+      play: false,
       message: `${payload} won!`
     };
 

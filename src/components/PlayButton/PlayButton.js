@@ -7,6 +7,7 @@ const PlayButton = ({ gameStart, gameRestart, gameStatus }) => {
   const { delay, gameField, emptySquares, activeSquare, score } = gameStatus;
   
   const startOptions = {
+    play: true,
     delay,
     score,
     gameField,
@@ -15,6 +16,7 @@ const PlayButton = ({ gameStart, gameRestart, gameStatus }) => {
   }
 
   const restartOptions = {
+    play: true,
     delay,
     fieldSize
   }
