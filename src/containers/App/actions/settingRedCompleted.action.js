@@ -1,9 +1,10 @@
 import { SETTING_RED_COMPLETED } from '../constants';
-import { setBlueAction } from './setBlue.action'
+import { settingBlueAction } from './settingBlue.action'
 import { addWinnerAction } from './addWinner.action'
 
 export const settingRedCompletedAction = (payload) => dispatch => {
-  const { delay, activeSquare, gameField, emptySquares, score } = payload  
+  
+  const { activeSquare, gameField, score } = payload  
 
   const setColor = (field, id, color) => {
     return field.map(row => (
@@ -18,24 +19,19 @@ export const settingRedCompletedAction = (payload) => dispatch => {
 
   const updatedWithRed = setColor(gameField, activeSquare.id, 'red')
 
-  const nextRoundOptions = {
-    play: true,
+  const newOptions = {    
     gameField: updatedWithRed,
     score: { 
       ...score,
       computer: ++score.computer
-    },
-    delay,
-    emptySquares
+    }
   }
 
-  dispatch({ type: SETTING_RED_COMPLETED, payload: updatedWithRed })
+  dispatch({ type: SETTING_RED_COMPLETED, payload: newOptions })
 
-  const startNextRound = nextRoundOptions.score.computer < nextRoundOptions.score.winner
-  if (startNextRound) {
-    dispatch(setBlueAction(nextRoundOptions))
-  } else {
-    dispatch(addWinnerAction({ winner: "Computer", date: Date.now() }))
-  }
-    
+  const startNextRound = newOptions.score.computer < score.winner
+  
+  startNextRound
+    ? dispatch(settingBlueAction())
+    : dispatch(addWinnerAction({ winner: "Computer", date: Date.now() }))    
 }

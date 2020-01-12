@@ -21,7 +21,7 @@ const  App = (props) => {
 const { settings, winners, gameStatus } = props;
 const { getSettings, getWinners } = props;
 const { setModeOptions, setName, gameStart, gameRestart, setGreen, settingRed, cancelSettingRed } = props;
-const { message } = gameStatus;
+const { message, play } = gameStatus;
 
   useEffect(() => {
     if (winners.length === 0) {
@@ -34,7 +34,7 @@ const { message } = gameStatus;
     <>
       <h1>Game In Dots</h1>
       <div className="inlineBlock">
-        <DropDown settings={settings} setModeOptions={setModeOptions}/>
+        <DropDown settings={settings} setModeOptions={setModeOptions} play={play}/>
         <InputField setName={setName}/>
         <PlayButton gameStatus={gameStatus} gameStart={gameStart} gameRestart={gameRestart} />        
       </div>
@@ -61,8 +61,8 @@ const mapDispatchToProps = (dispatch) => ({
   getWinners: () => { dispatch(getWinnersAction()); },  
   setModeOptions: (options) => { dispatch(setModeOptionsAction(options)); },
   setName: (name) => { dispatch(setNameAction(name)); },
-  gameStart: (options) => { dispatch(gameStartedAction(options)); },
-  gameRestart: (options) => { dispatch(gameRestartedAction(options)); },
+  gameStart: () => { dispatch(gameStartedAction()); },
+  gameRestart: (fieldSize) => { dispatch(gameRestartedAction(fieldSize)); },
   setGreen: (options) => { dispatch(setGreenAction(options)); },
   settingRed: (options) => { dispatch(settingRedAction(options)); },
   cancelSettingRed: (options) => { dispatch(settingRedCancelledAction(options)); }

@@ -3,10 +3,10 @@ import { setGameFieldOptionsAction } from './setGameFieldOptions.action'
 import { stopGameAction } from './stopGame.action'
 
 export const setModeOptionsAction  = (payload) => dispatch => { 
-  const fieldSize = payload.field;
+  const { modeOptions: { field }, modeOptions, play } = payload
   
-  
-  dispatch(stopGameAction());
-  dispatch({ type: SET_MODE_OPTIONS, payload })
-  dispatch(setGameFieldOptionsAction(fieldSize));
+  play && dispatch(stopGameAction());
+
+  dispatch({ type: SET_MODE_OPTIONS, payload: modeOptions })
+  dispatch(setGameFieldOptionsAction(field));
 };

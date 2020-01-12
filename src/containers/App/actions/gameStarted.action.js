@@ -1,7 +1,7 @@
 import { GAME_STARTED } from '../constants';
-import { setBlueAction } from './setBlue.action'
+import { settingBlueAction } from './settingBlue.action'
 
-export const gameStartedAction = (payload) => dispatch => {
+export const gameStartedAction = () => dispatch => {
   dispatch({ type: GAME_STARTED })  
-  dispatch(setBlueAction(payload));
+  dispatch(settingBlueAction());
 }

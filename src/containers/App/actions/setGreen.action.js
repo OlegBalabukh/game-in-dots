@@ -1,10 +1,10 @@
 import { SET_GREEN } from '../constants';
-import { setBlueAction } from './setBlue.action'
+import { settingBlueAction } from './settingBlue.action'
 import { addWinnerAction } from './addWinner.action'
 
 export const setGreenAction = (payload) => dispatch => {
 
-  const { id, gameField, delay, emptySquares, score, playerName } = payload
+  const { id, gameField, score, playerName } = payload
   
   const setColor = (field, id, color) => {
     return field.map(row => (
@@ -19,24 +19,19 @@ export const setGreenAction = (payload) => dispatch => {
 
   const updatedWithGreen = setColor(gameField, id, 'green')
 
-  const nextRoundOptions = {
+  const newOptions = {    
     gameField: updatedWithGreen,
     score: { 
       ...score,
       player: ++score.player
-    },
-    delay,
-    emptySquares
+    }
   }
 
-  dispatch({ type: SET_GREEN, payload: updatedWithGreen });
+  dispatch({ type: SET_GREEN, payload: newOptions });
 
-  const startNextRound = nextRoundOptions.score.player < nextRoundOptions.score.winner
+  const startNextRound = newOptions.score.player < score.winner
 
-  if (startNextRound) {
-    dispatch(setBlueAction(nextRoundOptions))
-  } else {
-    dispatch(addWinnerAction({ winner: playerName, date: Date.now() }))
-  }
-  
+  startNextRound
+    ? dispatch(settingBlueAction())
+    : dispatch(addWinnerAction({ winner: playerName, date: Date.now() }))  
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './DropDown.css';
 
-const DropDown = ({ settings, setModeOptions }) => {
+const DropDown = ({ settings, setModeOptions, play }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState("Pick game mode");
 
@@ -19,7 +19,10 @@ const DropDown = ({ settings, setModeOptions }) => {
   }
 
   const toggleMode = (mode) => {
-    const modeOptions = pickModeOptions(mode)
+    const modeOptions = {
+      modeOptions: pickModeOptions(mode),
+      play
+    }
     setModeOptions(modeOptions)
     setMode(mode);
     setIsOpen(false);

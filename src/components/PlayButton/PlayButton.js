@@ -1,31 +1,13 @@
 import React from 'react';
 
-const PlayButton = ({ gameStart, gameRestart, gameStatus }) => {
-  
+const PlayButton = ({ gameStart, gameRestart, gameStatus }) => { 
 
   const { fieldSize, playerName, message } = gameStatus;
-  const { delay, gameField, emptySquares, activeSquare, score } = gameStatus;
   
-  const startOptions = {
-    play: true,
-    delay,
-    score,
-    gameField,
-    emptySquares,
-    activeSquare  
-  }
-
-  const restartOptions = {
-    play: true,
-    delay,
-    fieldSize
-  }
-
   const handleClick = () => {
     message !== ""
-      ? gameRestart(restartOptions)
-      : gameStart(startOptions);
-    
+      ? gameRestart(fieldSize)
+      : gameStart();    
   }
 
   return (

@@ -1,7 +1,7 @@
-import { SET_BLUE } from '../constants';
+import { SETTING_BLUE_COMPLETED } from '../constants';
 
-export const setBlueAction  = (payload)  => async dispatch => {
-  const { play, delay, gameField, emptySquares } = payload;
+export const settingBlueCompletedAction  = (payload)  => dispatch => {
+  const { play, gameField, emptySquares } = payload;
   
   const getRandomID = (arr) => {
     return  arr[Math.floor(Math.random() * arr.length)];   
@@ -18,12 +18,6 @@ export const setBlueAction  = (payload)  => async dispatch => {
     ))
   }
 
-  const sleep = ms => {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(), ms)
-    })
-  }
-
   const randomID = getRandomID(emptySquares)
   const updatedEmptySquares = emptySquares.filter(id => id !== randomID)
   const updatedGameField = setColor(gameField, randomID, 'blue')
@@ -32,13 +26,8 @@ export const setBlueAction  = (payload)  => async dispatch => {
   const newRoundOptions = {
     gameField: updatedGameField, 
     emptySquares: updatedEmptySquares,
-    activeSquare: updatedActiveSquare 
-  }
-
-  console.log(play)
-  if (play) {
-    sleep(delay)
-    .then(() => dispatch({ type: SET_BLUE, payload: newRoundOptions }))
+    activeSquare: updatedActiveSquare
   }
   
+  play && dispatch({ type: SETTING_BLUE_COMPLETED, payload: newRoundOptions })  
 };
