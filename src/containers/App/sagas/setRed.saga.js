@@ -14,7 +14,7 @@ const gameStatusParams = ({ gameStatus: { activeSquare, gameField, delay, emptyS
 function* settingRed() {
   yield take(SETTING_RED);
 
-  const data = yield select(gameStatusParams);   
+  const data = yield select(gameStatusParams);
   yield delay(data.delay);  
   yield put(settingRedCompletedAction(data));
 }

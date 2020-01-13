@@ -13,7 +13,7 @@ const gameStatusParams = ({ gameStatus: { play, delay, gameField, emptySquares }
 function* settingBlue() {
   yield take(SETTING_BLUE);
 
-  const data = yield select(gameStatusParams);   
+  const data = yield select(gameStatusParams);
   yield delay(data.delay);  
   yield put(settingBlueCompletedAction(data));
 }

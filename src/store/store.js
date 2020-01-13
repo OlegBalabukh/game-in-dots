@@ -6,10 +6,9 @@ import reducers from './reducers'
 import rootSaga from './rootSaga'
 import thunk from 'redux-thunk';
 
-// create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 const middleware = composeWithDevTools(applyMiddleware(sagaMiddleware, thunk));
 
 export default createStore(reducers, {}, middleware);
 
-sagaMiddleware.run(rootSaga);  
+sagaMiddleware.run(rootSaga);

@@ -14,10 +14,8 @@ const InputField = ({ setName }) => {
       type="text"
       placeholder="Enter your name"
       onChange={handleChange}
-      />
+    />
   )
 }
 
 export default InputField;
-
-

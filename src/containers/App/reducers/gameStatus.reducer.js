@@ -1,5 +1,6 @@
 import {  
-  SET_MODE_OPTIONS,
+  SET_MODE,
+  SET_GAME_FIELD,
   SET_NAME,
   GAME_STARTED,
   GAME_FINISHED,
@@ -7,8 +8,7 @@ import {
   STOP_GAME,
   SETTING_BLUE_COMPLETED,
   SETTING_RED_COMPLETED,
-  SET_GREEN,
-  SET_GAME_FIELD_OPTIONS
+  SET_GREEN
 } from '../constants'
 
 const initialState = {
@@ -29,7 +29,7 @@ const initialState = {
 export const gameStatusReducer = (state = initialState, {type, payload}) => {
   switch(type) {
 
-    case SET_MODE_OPTIONS:
+    case SET_MODE:
       return {
         ...state,
         play: false,
@@ -38,7 +38,7 @@ export const gameStatusReducer = (state = initialState, {type, payload}) => {
         message: ""
       };
 
-    case SET_GAME_FIELD_OPTIONS:
+    case SET_GAME_FIELD:
       return {
         ...state,
         gameField: payload.gameField,
@@ -81,7 +81,6 @@ export const gameStatusReducer = (state = initialState, {type, payload}) => {
     case SETTING_BLUE_COMPLETED:
       return {
         ...state,
-        //play: true,
         gameField: payload.gameField,
         emptySquares: payload.emptySquares,
         activeSquare: payload.activeSquare

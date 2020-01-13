@@ -8,19 +8,19 @@ import GameField from '../../components/GameField/GameField';
 import LeaderBoard from '../../components/LeaderBoard/LeaderBoard';
 import { getSettingsAction } from './actions/getSettings.action';
 import { getWinnersAction } from './actions/getWinners.action';
-import { setModeOptionsAction } from './actions/setModeOptions.action';
+import { setModeAction } from './actions/setMode.action';
 import { setNameAction } from './actions/setName.action';
 import { gameStartedAction } from './actions/gameStarted.action';
 import { gameRestartedAction } from './actions/gameRestarted.action';
 import { setGreenAction } from './actions/setGreen.action';
 import { settingRedAction } from './actions/settingRed.action';
-import { settingRedCancelledAction  } from './actions/settingRedCancelled.action';
+import { settingRedCancelledAction } from './actions/settingRedCancelled.action';
 import './App.css';
 
 const  App = (props) => {
 const { settings, winners, gameStatus } = props;
-const { getSettings, getWinners } = props;
-const { setModeOptions, setName, gameStart, gameRestart, setGreen, settingRed, cancelSettingRed } = props;
+const { getSettings, getWinners, setMode, setName } = props;
+const { gameStart, gameRestart, setGreen, settingRed, cancelSettingRed } = props;
 const { message, play } = gameStatus;
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const { message, play } = gameStatus;
         <div className="settings">
           <DropDown
             settings={settings}
-            setModeOptions={setModeOptions}
+            setMode={setMode}
             play={play}
           />
           <InputField setName={setName}/>
@@ -44,10 +44,10 @@ const { message, play } = gameStatus;
             gameStatus={gameStatus}
             gameStart={gameStart}
             gameRestart={gameRestart}
-          />        
-        </div>      
+          />
+        </div>
         <div className="gameField">
-          <h3 id="message">{ message }</h3>     
+          <h3 id="message">{ message }</h3>
           <GameField
             gameStatus={gameStatus}
             setGreen={setGreen}
@@ -55,13 +55,13 @@ const { message, play } = gameStatus;
             cancelSettingRed={cancelSettingRed}
           />
         </div>
-      </div>      
+      </div>
       <div className="right section">
         <LeaderBoard winners={winners} />
-      </div>     
-    </div>  
+      </div>
+    </div>
   )
-} 
+}
 
 const mapStateToProps = (state) => ({
   settings: state.settings,
@@ -71,8 +71,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getSettings: () => { dispatch(getSettingsAction()); },
-  getWinners: () => { dispatch(getWinnersAction()); },  
-  setModeOptions: (options) => { dispatch(setModeOptionsAction(options)); },
+  getWinners: () => { dispatch(getWinnersAction()); },
+  setMode: (options) => { dispatch(setModeAction(options)); },
   setName: (name) => { dispatch(setNameAction(name)); },
   gameStart: () => { dispatch(gameStartedAction()); },
   gameRestart: (fieldSize) => { dispatch(gameRestartedAction(fieldSize)); },

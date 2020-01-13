@@ -14,7 +14,7 @@
 }
 
 .square {
-  border: 1px solid #CFD8DC;  
+  border: 1px solid #CFD8DC;
 }
 
 .squareSize-5 {
@@ -24,12 +24,12 @@
 
 .squareSize-10 {
   width: 40px;
-  height: 40px;  
+  height: 40px;
 }
 
 .squareSize-15 {
   width: 30px;
-  height: 30px;  
+  height: 30px;
 }
 
 .square#blue {

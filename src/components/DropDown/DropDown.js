@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './DropDown.css';
 
-const DropDown = ({ settings, setModeOptions, play }) => {
+const DropDown = ({ settings, setMode, play }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [mode, setMode] = useState("Pick game mode");
+  const [localMode, setLocalMode] = useState("Pick game mode");
 
   const toggleOpen = () => setIsOpen(!isOpen);
 
@@ -12,7 +12,7 @@ const DropDown = ({ settings, setModeOptions, play }) => {
       case 'Normal':
         return settings.normalMode
       case 'Hard':
-      return settings.hardMode    
+      return settings.hardMode
       default:
         return settings.easyMode 
     }
@@ -23,8 +23,8 @@ const DropDown = ({ settings, setModeOptions, play }) => {
       modeOptions: pickModeOptions(mode),
       play
     }
-    setModeOptions(modeOptions)
-    setMode(mode);
+    setMode(modeOptions)
+    setLocalMode(mode);
     setIsOpen(false);
   }
 
@@ -40,7 +40,7 @@ const DropDown = ({ settings, setModeOptions, play }) => {
         data-toggle="dropdown"
         onClick = {toggleOpen}
       >
-        { mode }
+        { localMode }
         <i className={chevronClass}></i>
       </button>
       <div className={menuClass} id="dropdownMenu">
