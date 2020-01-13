@@ -31,22 +31,35 @@ const { message, play } = gameStatus;
   }, [winners, getSettings, getWinners]);
   
   return (
-    <>
-      <h1>Game In Dots</h1>
-      <div className="inlineBlock">
-        <DropDown settings={settings} setModeOptions={setModeOptions} play={play}/>
-        <InputField setName={setName}/>
-        <PlayButton gameStatus={gameStatus} gameStart={gameStart} gameRestart={gameRestart} />        
-      </div>
-      <h3>{ message }</h3>
-      <GameField
-        gameStatus={gameStatus}
-        setGreen={setGreen}
-        settingRed={settingRed}
-        cancelSettingRed={cancelSettingRed}
-      />
-      <LeaderBoard winners={winners} />      
-    </>  
+    <div className="main">
+      <div className="left section">
+        <div className="settings">
+          <DropDown
+            settings={settings}
+            setModeOptions={setModeOptions}
+            play={play}
+          />
+          <InputField setName={setName}/>
+          <PlayButton
+            gameStatus={gameStatus}
+            gameStart={gameStart}
+            gameRestart={gameRestart}
+          />        
+        </div>      
+        <div className="gameField">
+          <h3 id="message">{ message }</h3>     
+          <GameField
+            gameStatus={gameStatus}
+            setGreen={setGreen}
+            settingRed={settingRed}
+            cancelSettingRed={cancelSettingRed}
+          />
+        </div>
+      </div>      
+      <div className="right section">
+        <LeaderBoard winners={winners} />
+      </div>     
+    </div>  
   )
 } 
 

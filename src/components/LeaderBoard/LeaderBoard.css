@@ -1,13 +1,12 @@
 p#winner {
-  width: 500px;
+  width: auto;
   height: 55px;
-  margin: 3px 3px;
+  margin: 3px 30px;
   background-color: #CFD8DC;
   color: #7B8D93; 
   font-size: 1.3em;
   font-weight: 500;
   display: flex;
-  align-items: center;
   padding: 15px;
 }
 
@@ -15,6 +14,8 @@ span#date {
   margin-left: auto;
 }
 
-div h2 {
-  color: #7B8D93; 
+.leaderBoard h2 {
+  color: #7B8D93;
+  text-align: left;
+  margin-left: 30px;
 }

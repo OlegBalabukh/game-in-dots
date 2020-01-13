@@ -1,6 +1,8 @@
 #input {
   width: 200px;
-  padding: 24px;
+  padding: 22px 24px 26px 24px;
   color: #7B8D93; 
   font-size: 1.1em;
+  margin: 0px 14px;
+  background-color: #F3F3F3;
 }
