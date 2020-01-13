@@ -1,6 +1,7 @@
 import {  
   SET_MODE_OPTIONS,
   SET_NAME,
+  GAME_STARTED,
   GAME_FINISHED,
   GAME_RESTARTED,
   STOP_GAME,
@@ -51,9 +52,16 @@ export const gameStatusReducer = (state = initialState, {type, payload}) => {
         playerName: payload
       };
 
+      case GAME_STARTED:
+      return {
+        ...state,
+        play: true
+      };
+
       case GAME_RESTARTED:
       return {
         ...state,
+        play: true,
         message: ""
       };
 
@@ -73,7 +81,7 @@ export const gameStatusReducer = (state = initialState, {type, payload}) => {
     case SETTING_BLUE_COMPLETED:
       return {
         ...state,
-        play: true,
+        //play: true,
         gameField: payload.gameField,
         emptySquares: payload.emptySquares,
         activeSquare: payload.activeSquare

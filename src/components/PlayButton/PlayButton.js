@@ -1,22 +1,28 @@
 import React from 'react';
 
 const PlayButton = ({ gameStart, gameRestart, gameStatus }) => {
-  const { fieldSize, playerName, message } = gameStatus;
+  const { fieldSize, playerName, message, play } = gameStatus;
 
-  const handleClick = () => {
+  const handleClick = () => {    
     message !== ""
       ? gameRestart(fieldSize)
       : gameStart();
   }
 
-  return (
+  const isDisabled = () => {
+    if (play) return true;
+    if (fieldSize && playerName.length > 2) return false
+    return true;
+  }
+
+  return (    
     <button
       type="button"
-      className="btn btn-secondary"
+      className= "btn btn-secondary"
       style={{width: "115px", padding: "10px"}}
       onClick={handleClick}
-      disabled={!(fieldSize && playerName.length > 2) }
-    > {!message ? "PLAY" : "PLAY AGAIN"} </button>
+      disabled={isDisabled()}
+    > {!message ? "PLAY" : "PLAY AGAIN"} </button>   
   )
 }
 

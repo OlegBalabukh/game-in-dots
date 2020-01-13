@@ -4,7 +4,7 @@ import { settingBlueCompletedAction } from '../actions/settingBlueCompleted.acti
 import { SETTING_BLUE, SETTING_BLUE_CANCELLED, SETTING_BLUE_COMPLETED } from '../constants'
 
 const gameStatusParams = ({ gameStatus: { play, delay, gameField, emptySquares } }) => ({
-  play: true,
+  play,
   delay,
   gameField,
   emptySquares
