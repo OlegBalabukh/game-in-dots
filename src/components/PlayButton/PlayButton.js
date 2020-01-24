@@ -4,26 +4,27 @@ const PlayButton = ({ gameStart, gameRestart, gameStatus }) => {
   const { fieldSize, playerName, message, play } = gameStatus;
 
   const handleClick = () => {
-    message !== ""
-      ? gameRestart(fieldSize)
-      : gameStart();
-  }
+    message !== '' ? gameRestart(fieldSize) : gameStart();
+  };
 
   const isDisabled = () => {
     if (play) return true;
-    if (fieldSize && playerName.length > 2) return false
+    if (fieldSize && playerName.length) return false;
     return true;
-  }
+  };
 
   return (
     <button
-      type="button"
-      className= "btn btn-secondary"
-      style={{width: "115px", padding: "10px"}}
+      type='button'
+      className='btn btn-secondary'
+      style={{ width: '115px', padding: '10px' }}
       onClick={handleClick}
       disabled={isDisabled()}
-    > {!message ? "PLAY" : "PLAY AGAIN"} </button>
-  )
-}
+    >
+      {' '}
+      {!message ? 'PLAY' : 'PLAY AGAIN'}{' '}
+    </button>
+  );
+};
 
 export default PlayButton;
