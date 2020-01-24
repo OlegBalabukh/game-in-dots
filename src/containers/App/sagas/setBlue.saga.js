@@ -1,9 +1,24 @@
-import { put, take, select, cancel, call, delay, fork } from 'redux-saga/effects';
+import {
+  put,
+  take,
+  select,
+  cancel,
+  call,
+  delay,
+  fork
+} from 'redux-saga/effects';
 
-import { settingBlueCompletedAction } from '../actions/settingBlueCompleted.action'
-import { SETTING_BLUE, SETTING_BLUE_CANCELLED, SETTING_BLUE_COMPLETED } from '../constants'
+import {
+  SETTING_BLUE,
+  SETTING_BLUE_CANCELLED,
+  SETTING_BLUE_COMPLETED
+} from '../constants';
 
-const gameStatusParams = ({ gameStatus: { play, delay, gameField, emptySquares } }) => ({
+import { settingBlueCompletedAction } from '../actions/settingBlueCompleted.action';
+
+const gameStatusParams = ({
+  gameStatus: { play, delay, gameField, emptySquares }
+}) => ({
   play,
   delay,
   gameField,
@@ -14,7 +29,7 @@ function* settingBlue() {
   yield take(SETTING_BLUE);
 
   const data = yield select(gameStatusParams);
-  yield delay(data.delay);  
+  yield delay(data.delay);
   yield put(settingBlueCompletedAction(data));
 }
 
@@ -25,7 +40,7 @@ function* cancelSettingBlue(task) {
 export function* settingBlueActionWatcher() {
   while (true) {
     const task = yield fork(settingBlue);
-    
+
     yield take([SETTING_BLUE_CANCELLED, SETTING_BLUE_COMPLETED]);
     yield call(cancelSettingBlue, task);
   }

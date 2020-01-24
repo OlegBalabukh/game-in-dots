@@ -2,8 +2,8 @@ p#winner {
   width: auto;
   height: 55px;
   margin: 3px 30px;
-  background-color: #CFD8DC;
-  color: #7B8D93; 
+  background-color: #cfd8dc;
+  color: #7b8d93;
   font-size: 1.3em;
   font-weight: 500;
   display: flex;
@@ -15,7 +15,7 @@ span#date {
 }
 
 .leaderBoard h2 {
-  color: #7B8D93;
+  color: #7b8d93;
   text-align: left;
   margin-left: 30px;
 }

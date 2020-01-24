@@ -1,9 +1,9 @@
 #dropdownBtn {
   width: 200px;
   text-align: left;
-  background-color: #CFD8DC;
+  background-color: #cfd8dc;
   padding: 10px;
-  color: #7B8D93;
+  color: #7b8d93;
   font-size: 1.1em;
 }
 
@@ -11,11 +11,12 @@
   width: 200px;
 }
 
-.dropdown-toggle::after { 
+.dropdown-toggle::after {
   content: none;
 }
 
-.fa-chevron-up, .fa-chevron-down {
+.fa-chevron-up,
+.fa-chevron-down {
   font-size: 0.7em;
   float: right;
   padding: 8px 10px;

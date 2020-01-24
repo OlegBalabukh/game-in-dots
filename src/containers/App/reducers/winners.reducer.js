@@ -1,10 +1,10 @@
-import { GET_WINNERS } from '../constants'
+import { GET_WINNERS } from '../constants';
 
-export const winnersReducer = (state = [], {type, payload}) => {
-  switch(type) {
+export const winnersReducer = (state = [], { type, payload }) => {
+  switch (type) {
     case GET_WINNERS:
-      return payload
+      return payload;
     default:
-      return state
+      return state;
   }
-}
+};

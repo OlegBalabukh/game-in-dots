@@ -1,10 +1,10 @@
 export const setColor = (field, id, color) => {
-  return field.map(row => (
+  return field.map(row =>
     row.map(square => {
       if (square.id === id) {
-        return {...square, color}
+        return { ...square, color };
       }
-      return square
+      return square;
     })
-  ))
-}
+  );
+};

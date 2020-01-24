@@ -21,8 +21,7 @@ const PlayButton = ({ gameStart, gameRestart, gameStatus }) => {
       onClick={handleClick}
       disabled={isDisabled()}
     >
-      {' '}
-      {!message ? 'PLAY' : 'PLAY AGAIN'}{' '}
+      {!message ? 'PLAY' : 'PLAY AGAIN'}
     </button>
   );
 };
